@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sửa sản phẩm</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      input,
+      textarea {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 16px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 14px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sửa sản phẩm</h1>
+    <form id="add-product">
+      <label for="name">Tên sản phẩm</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        value="<%= product.name %>"
+        required
+      />
+
+      <label for="img">Hình ảnh</label>
+      <input
+        type="text"
+        name="img"
+        id="img"
+        value="<%= product.img %>"
+        required
+      />
+
+      <label for="price">Giá</label>
+      <input
+        type="text"
+        name="price"
+        id="price"
+        required
+        value="<%= product.price %>"
+      />
+
+      <label for="desc">Mô tả</label>
+      <textarea name="desc" id="desc" required><%= product.desc %></textarea>
+
+      <div style="text-align: center; margin-top: 10px">
+        <button type="submit">Sửa sản phẩm</button>
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("add-product")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const id = "<%= productId %>";
+          console.log("id", id);
+
+          const name = document.getElementById("name").value;
+          const img = document.getElementById("img").value;
+          const price = document.getElementById("price").value;
+          const desc = document.getElementById("desc").value;
+
+          const data = { name, img, price, desc };
+
+          try {
+            const respone = await fetch(
+              `http://localhost:8888/api/products/${id}`,
+              {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              }
+            );
+
+            const result = await respone.json();
+
+            if (respone.ok) {
+              alert(result.message || "Sửa sản phẩm thành công");
+              window.location.href = "/product";
+            } else {
+              alert(result.message || "Sửa sản phẩm thất bại");
+            }
+          } catch (error) {
+            console.error("Error : ", error);
+            alert("Có lỗi xảy ra khi sửa thông tin sản phẩm");
+          }
+        });
+    </script>
+  </body>
+</html>
