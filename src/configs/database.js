@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 async function connectDB() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/crud");
+    await mongoose.connect('mongodb://127.0.0.1:27017/crud');
 
-    console.log("Connect DB Successful");
+    console.log('Connect DB Successful');
   } catch (error) {
-    console.log("Connect DB Fail ", error);
+    console.log('Connect DB Fail ', error);
   }
 }
 

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema(
   {
@@ -17,11 +17,16 @@ const productSchema = mongoose.Schema(
     desc: {
       type: String,
     },
+    category_id: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'category', // tham chiếu đến table category
+      require: true,
+    },
   },
   {
     timestamps: true,
     versionKey: false,
-  }
+  },
 );
 
-module.exports = mongoose.model("product", productSchema);
+module.exports = mongoose.model('product', productSchema);

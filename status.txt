@@ -1,0 +1,17 @@
+Nodejs 
+
+1-N
+- Bảng nhiều lưu khóa chính của bảng 1 để làm khóa ngoại
+- Trong mongoose -> Bảng nhiều nó sẽ lưu id của bảng ít
+
+VD: Table Category relationship Table Product => 1 - N ( 1 danh mục có 1 hoặc nhiều sản phẩm hoặc không có sản phẩm nào )
+
+=> Trong Table Product nó sẽ lấy cái id của category (category_id) làm khóa ngoại
+
+* Query là ko bắt buộc truyền 
+* Param là bắt buộc truyền
+
+$lte : nhỏ hơn =
+$gte : lớn hơn =
+
+49p33s
