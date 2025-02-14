@@ -14,4 +14,8 @@ VD: Table Category relationship Table Product => 1 - N ( 1 danh mục có 1 ho�
 $lte : nhỏ hơn =
 $gte : lớn hơn =
 
-49p33s
+Trong file ignore
+
+uploads/* -> là ẩn tất cả -> lúc này nó sẽ mất luôn thư mục
+-> Nhưng mà up lên github thì thư mục trống thì nó sẽ không hiển thị
+=> Tạo thêm file .gitkeep

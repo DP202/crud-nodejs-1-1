@@ -19,6 +19,11 @@ module.exports = {
 
   createCategory: async (req, res) => {
     const body = req.body;
+    const file = req.file;
+    console.log(file);
+    console.log(body);
+
+    body.img = file.filename; // img trong model
     try {
       const newCategory = await CategoryModel.create(body);
 
